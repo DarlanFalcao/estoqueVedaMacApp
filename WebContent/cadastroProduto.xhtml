@@ -12,7 +12,7 @@
     
     <ui:composition template="/templates/templateBase.xhtml">
  <f:metadata>
-        <f:event  type="preRenderView" listener="#{estoqueBean.carregarPagina}"  />
+        <!--  f:event  type="preRenderView" listener="#{estoqueBean.carregarPagina}"  />-->
     </f:metadata>
         <ui:define name="conteudo">
             <p:panel header="Cadastro de Produtos">
@@ -27,7 +27,7 @@
                                          size="8" />
                             <p:outputLabel value="Fornecedor: " styleClass="labelTeste"/>
                             <p:inputText value="#{estoqueBean.produto.fornecedor}"
-                                         size="50"  styleClass="inputTeste"/>
+                                         size="50" maxlength="15" styleClass="inputTeste"/>
 
                         </h:panelGrid>
                         <p:outputLabel value="Nome: " for="descricao"/>
@@ -69,7 +69,7 @@
                             <p:outputLabel value="NCM: " />
                             <p:inputText value="#{estoqueBean.produto.ncm}" size="10" />
                             <p:outputLabel value="Cod.Espec.Sit.Tribut: " />
-                            <p:inputText value="#{estoqueBean.produto.trib_st_perc}" size="10" />
+                            <p:inputText value="#{estoqueBean.produto.cest}" size="10" />
                             <p:outputLabel value="Origem(0/1): " />
                             <p:inputText value="#{estoqueBean.produto.origem}" size="10" />
                         </h:panelGrid>

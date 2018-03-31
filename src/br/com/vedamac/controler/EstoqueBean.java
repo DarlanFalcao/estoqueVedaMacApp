@@ -26,7 +26,7 @@ import br.com.vedamac.model.Unidade;
  *
  * @author DarlanFalcao
  */
-@ManagedBean(name="estoqueBean")
+@ManagedBean(name = "estoqueBean")
 @ViewScoped
 public class EstoqueBean implements Serializable {
 
@@ -43,42 +43,43 @@ public class EstoqueBean implements Serializable {
 	private Produto produtoSelecionado = new Produto();
 	private ListDataModel<Produto> produtosSelecionados = new ListDataModel<Produto>();
 
-
-	
 	public EstoqueBean() {
 
-		limEstoque = 5;
-		ProdutoDAO pDao = new ProdutoDAO();
-		try {
-			produtos = pDao.listarProdutos();
-			unidades = pDao.retornaListaUnidade();
-			produtosSelecionados = new ListDataModel<Produto>(pDao.listarProdutos());
-			for(Produto p : produtosSelecionados) {
-				System.out.println(p.getFornecedor());
-				//System.out.println(p.getFornecedor().length());
-			}
-		} catch (SQLException ex) {
-			Logger.getLogger(EstoqueBean.class.getName()).log(Level.SEVERE, null, ex);
+		System.out.println("Construtor!");
+		if (produto != null) {
+			System.out.println("Valor Id Construtor: " + produto.getCodigo());
+
 		}
-
-	}
-	public static void main(String[] args) {
-		EstoqueBean est = new EstoqueBean();
-	}
-
-	public void carregarPagina(ComponentSystemEvent event) {
-
+		limEstoque = 5;
 		ProdutoDAO pDao = new ProdutoDAO();
 		produto = new Produto();
 		try {
 			unidades = pDao.retornaListaUnidade();
 			produtos = pDao.listarProdutos();
+			produto.setCodigo(obterSequence());
+			System.out.println("Valor Id Carregar Pagina: " + produto.getCodigo());
+			produtosSelecionados = new ListDataModel<Produto>(pDao.listarProdutos());
+
 		} catch (SQLException ex) {
 			Logger.getLogger(EstoqueBean.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
 
-		produto.setCodigo(obterSequence());
-		produto.setNomeReduzido("Teste");
+	public void carregarPagina(ComponentSystemEvent event) {
+		System.out.println("Carrregar Pagina!");
+		limEstoque = 5;
+		ProdutoDAO pDao = new ProdutoDAO();
+		produto = new Produto();
+		try {
+			unidades = pDao.retornaListaUnidade();
+			produtos = pDao.listarProdutos();
+			produto.setCodigo(obterSequence());
+			System.out.println("Valor Id Carregar Pagina: " + produto.getCodigo());
+			produtosSelecionados = new ListDataModel<Produto>(pDao.listarProdutos());
+
+		} catch (SQLException ex) {
+			Logger.getLogger(EstoqueBean.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 	}
 
@@ -144,14 +145,16 @@ public class EstoqueBean implements Serializable {
 	public String imprimirRelatorio() {
 		return "index";
 	}
-   public void unidadeChange() {
-	System.out.println("VALUE: "+produto.getUnidade());
-	setIdUnidade(produto.getUnidade());
-  }
+
+	public void unidadeChange() {
+		System.out.println("VALUE: " + produto.getUnidade());
+		setIdUnidade(produto.getUnidade());
+	}
+
 	public String salvarEdicao() {
 
 		ProdutoDAO pdao = new ProdutoDAO();
-		//produto = new Produto();
+		// produto = new Produto();
 		System.out.println("FORNECEDOR BEAN: " + produto.getFornecedor());
 		try {
 			setIdUnidade(produto.getUnidade());
@@ -168,6 +171,7 @@ public class EstoqueBean implements Serializable {
 	public String salvarProduto() {
 		ProdutoDAO pdao = new ProdutoDAO();
 		try {
+			produto.setImages("images");
 			pdao.inserirProduto(produto);
 			Messages.addGlobalInfo("Produto Cadastrado com Sucesso!", "Sucesso!");
 			produto = new Produto();
@@ -177,6 +181,7 @@ public class EstoqueBean implements Serializable {
 			Messages.addGlobalError(ex.getMessage());
 			Logger.getLogger(EstoqueBean.class.getName()).log(Level.SEVERE, null, ex);
 		}
+
 		return "cadastroProduto";
 
 	}
@@ -226,7 +231,6 @@ public class EstoqueBean implements Serializable {
 		System.out.println(getClass().getSimpleName());
 		return String.format("%s[id=%s]", getClass().getSimpleName(), getIdUnidade());
 	}
-	
 
 	public int obterSequence() {
 		int id = 0;

@@ -37,7 +37,7 @@ public class ProdutoDAO {
 				+ "unidade, " + "nome_reduzido, " + "seg_name, " + "marca, " + "garantia, " + "ean, " + "ncm, "
 				+ "cest, " + "origem, " + "preco_compra, " + "preco, " + "peso, " + "icms_cst, " + "icms_perc, "
 				+ "icms_pred, " + "ipi_cst, " + "ipi_perc, " + "pis_cst, " + "pis_perc, " + "cofins_cst, "
-				+ "cofins_perc, " + "images " + ")" + " values (" + produto.getCodigo() + ", " + "'"
+				+ "cofins_perc, " + "images " + ",qtde"+")" + " values (" + produto.getCodigo() + ", " + "'"
 				+ produto.getCodigoForn() + "', " + "'" + produto.getFornecedor() + "', " + "'" + produto.getDescricao()
 				+ "', " + "'" + produto.getUnidade() + "', " + "'" + produto.getNomeReduzido() + "', " + "'"
 				+ produto.getSegNome() + "', " + "'" + produto.getMarca() + "', " + "" + produto.getGarantia() + ", "
@@ -49,7 +49,7 @@ public class ProdutoDAO {
 				+ produto.getPis_perc() + ", " + "'" + produto.getConfins_cst() + "', " + "" + produto.getConfins_perc()
 				+ ", " + "'" + produto.getImages() + "'"+"," +produto.getQtde()+ ")";
 
-		
+			System.out.println("SQL: "+sql);
 			conexao.getStatment().executeUpdate(sql);
 				// TODO Auto-generated catch block
 			
