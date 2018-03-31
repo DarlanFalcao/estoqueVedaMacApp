@@ -83,18 +83,6 @@ public class EstoqueBean implements Serializable {
 
 	}
 
-	public void carregarPagListarProduto(PreRenderViewEvent event) {
-		// limEstoque = 5;
-		// ProdutoDAO pDao = new ProdutoDAO();
-		// produto = new Produto();
-		// produto.setDescricao("Teste");
-		// produtos.add(produto);
-
-		// unidades = pDao.retornaListaUnidade();
-		// produtosSelecionados = new ListDataModel<Produto>(pDao.listarProdutos());
-		//
-	}
-
 	public void editarProduto(ActionEvent event) {
 		isEdicao = true;
 		produto = produtosSelecionados.getRowData();
