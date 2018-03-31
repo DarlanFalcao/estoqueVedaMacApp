@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+.menuPrincipal{
+    background-color: graytext;
+}
+.pilha{
+    padding-bottom: 170px;
+    position: absolute;
+}
+.teste{
+    background-color: black;
+}

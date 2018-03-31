@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>VedaMac Controle de Estoque</title>
+    </h:head>
+
+    <h:body>
+<f:metadata>
+        <f:event  type="postValidate" listener="#{estoqueBean.carregarPagina}"  />
+    </f:metadata>
+
+        <p:growl id="messages" showDetail="true" sticky="true" /> 
+        <p:layout fullPage="true">
+            <p:layoutUnit header="Vedamac Controle de Estoque" position="north"  style="font-size: 37px;font-style: normal;font-family: -webkit-pictograph;" >
+                <img src="../tema/imagens/principal.jpg"  alt="principal" align="middle" height="80"
+                     />
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="250" header="Menu"
+                          resizable="false" closable="false" collapsible="false">
+                <h:form >
+
+                    <p:menu toggleable="false" >
+                        <p:submenu label="Cadastro">
+                            <p:menuitem   value="Novo Produto" action="cadastroProduto"  icon="ui-icon-disk" partialSubmit="true" />
+                            <p:menuitem value="Listar Produtos" action="listarProduto"  icon="ui-icon-pencil"  partialSubmit="true"/>
+                        </p:submenu>
+                        <p:submenu label="Relatórios">
+                            <p:menuitem value="Imprimir relatório" action="imprimirRelatorio"   icon="ui-icon-print" partialSubmit="true"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" resizable="false" closable="false"
+                          collapsible="false">
+                <ui:insert name="conteudo" >
+
+                </ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+
+
+    </h:body>
+</html>

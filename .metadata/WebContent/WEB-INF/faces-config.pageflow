@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15221087036960" configfile="/estoqueVedaMacApp/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="listarProdutos.xhtml" x="425" y="24" id="pf15221228392971" path="/listarProdutos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastroProduto.xhtml" x="417" y="125" id="pf15221228392972" path="/cadastroProduto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="240" y="89" id="pf15221228392973" path="/index.xhtml"/>
+</pageflow:Pageflow>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions"
+      >
+
+    
+    <ui:composition template="/templates/templateBase.xhtml">
+ <f:metadata>
+        <f:event  type="preRenderView" listener="#{estoqueBean.carregarPagina}"  />
+    </f:metadata>
+        <ui:define name="conteudo">
+            <p:panel header="Cadastro de Produtos">
+                <h:form id="frmCad">
+                    <h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="2">
+                        <p:outputLabel value="Código: " />
+                        <h:panelGrid columns="5">
+                            <p:inputText value="#{estoqueBean.produto.codigo}" disabled="true"
+                                         size="8" />
+                            <p:outputLabel value="Cod Fornecedor: "/>
+                            <p:inputText value="#{estoqueBean.produto.codigoForn}"
+                                         size="8" />
+                            <p:outputLabel value="Fornecedor: " styleClass="labelTeste"/>
+                            <p:inputText value="#{estoqueBean.produto.fornecedor}"
+                                         size="50"  styleClass="inputTeste"/>
+
+                        </h:panelGrid>
+                        <p:outputLabel value="Nome: " for="descricao"/>
+                        <h:panelGrid columns="1">
+                            <p:inputText id="descricao" value="#{estoqueBean.produto.descricao}" size="103" />
+                        </h:panelGrid>
+                        <p:outputLabel value="Nome Red: " />
+                        <h:panelGrid columns="3"  cellpadding="2">
+
+                            <p:inputText value="#{estoqueBean.produto.nomeReduzido}" size="40" />
+                            <p:outputLabel value="Marca: " >
+
+                            </p:outputLabel>
+                            <p:inputText value="#{estoqueBean.produto.marca}" size="50" />
+                        </h:panelGrid>
+                        <p:outputLabel value="Seg Nome: " style="padding-right:20px;"/>
+                        <h:panelGrid columns="5" cellpadding="2">
+
+                            <p:inputText value="#{estoqueBean.produto.segNome}" size="40" />
+                            <p:outputLabel value="EAN: " />
+                            <p:inputText value="#{estoqueBean.produto.ean}" size="40" />
+
+                        </h:panelGrid>
+                        <p:outputLabel value="Unidade: " />
+
+                        <h:panelGrid columns="2">
+
+                            <p:selectOneMenu style="width:225px" 
+                                             value="#{estoqueBean.produto.unidade}" converter="omnifaces.SelectItemsConverter">
+                                <f:selectItem noSelectionOption="true" itemLabel="Selecione a Unidade"/>
+                                <f:selectItems  value="#{estoqueBean.unidades}" var="unid" itemLabel="#{unid.unidade}" itemValue="#{unid.idUnidade}"/>
+
+                            </p:selectOneMenu>
+
+                        </h:panelGrid>
+                        <p:outputLabel value="Garantia: " />
+                        <h:panelGrid columns="7">
+                            <p:inputText value="#{estoqueBean.produto.garantia}" size="10" />
+                            <p:outputLabel value="NCM: " />
+                            <p:inputText value="#{estoqueBean.produto.ncm}" size="10" />
+                            <p:outputLabel value="Cod.Espec.Sit.Tribut: " />
+                            <p:inputText value="#{estoqueBean.produto.trib_st_perc}" size="10" />
+                            <p:outputLabel value="Origem(0/1): " />
+                            <p:inputText value="#{estoqueBean.produto.origem}" size="10" />
+                        </h:panelGrid>
+                        <p:outputLabel value="Preço Compra: " />
+                        <h:panelGrid columns="5">
+                            <p:inputText value="#{estoqueBean.produto.precoCompra}" size="10" />
+                            <p:outputLabel value="Preço Venda: " />
+                            <p:inputText value="#{estoqueBean.produto.preco}" size="10" />
+                            <p:outputLabel value="Peso: " />
+                            <p:inputText value="#{estoqueBean.produto.peso}" size="10" />
+
+                        </h:panelGrid>
+                        <p:outputLabel value="CST ICMS(xxx): " />
+                        <h:panelGrid columns="10">
+                            <p:inputText value="#{estoqueBean.produto.icms_cst}" size="5" />
+                            <p:outputLabel value="% ICMS: " />
+                            <p:inputText value="#{estoqueBean.produto.icms_perc}" size="5" />
+                            <p:outputLabel value="% ICMS(Red): " />
+                            <p:inputText value="#{estoqueBean.produto.icms_pred}" size="5" />
+                            <p:outputLabel value="CST IPI(xx): " />
+                            <p:inputText value="#{estoqueBean.produto.ipi_cst}" size="5" />
+                            <p:outputLabel value="% IPI: " />
+                            <p:inputText value="#{estoqueBean.produto.ipi_perc}" size="5" />
+
+
+                        </h:panelGrid>
+                        <p:outputLabel value="CST PIS(xx): " />
+
+                        <h:panelGrid columns="7">
+
+                            <p:inputText value="#{estoqueBean.produto.pis_cst}" size="5" />
+                            <p:outputLabel value="%PIS: " />
+
+                            <p:inputText value="#{estoqueBean.produto.pis_perc}" size="5" />
+                            <p:outputLabel value="CST CONFINS: " />
+                            <p:inputText value="#{estoqueBean.produto.confins_cst}" size="5" />
+                            <p:outputLabel value="%CONFINS: " />
+                            <p:inputText value="#{estoqueBean.produto.confins_perc}" size="5" />
+                        </h:panelGrid>
+                        <p:outputLabel value="Quantidade: " for="qtde"/>
+                        <h:panelGrid columns="1">
+                            <p:inputText  id="qtde"  value="#{estoqueBean.produto.qtde}" size ="10"/>
+                        </h:panelGrid>
+
+                    </h:panelGrid>
+                    
+                    <p:commandButton value="Salvar" update="frmCad" ajax="false"
+                                     action="#{estoqueBean.salvarProduto}"   style="padding: 8px;padding-left: 20px;padding-right: 20px;padding-bottom: 9px;" />
+                
+                </h:form>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+</html>
