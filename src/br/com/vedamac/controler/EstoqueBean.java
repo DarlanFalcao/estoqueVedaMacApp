@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ComponentSystemEvent;
@@ -42,6 +43,7 @@ public class EstoqueBean implements Serializable {
 	private int limEstoque = 10;
 	private Produto produtoSelecionado = new Produto();
 	private ListDataModel<Produto> produtosSelecionados = new ListDataModel<Produto>();
+	private List<String> images;
 
 	public EstoqueBean() {
 
@@ -59,11 +61,25 @@ public class EstoqueBean implements Serializable {
 			produto.setCodigo(obterSequence());
 			System.out.println("Valor Id Carregar Pagina: " + produto.getCodigo());
 			produtosSelecionados = new ListDataModel<Produto>(pDao.listarProdutos());
+			
 
 		} catch (SQLException ex) {
 			Logger.getLogger(EstoqueBean.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	@PostConstruct
+    public void init() {
+        images = new ArrayList<String>();
+        images.add("principal");
+        //images.add("Foto.jpg");
+        //images.add("mario.jpg");
+        
+    }
+ 
+    public List<String> getImages() {
+        return images;
+    }
+ 
 
 	public void carregarPagina(ComponentSystemEvent event) {
 		System.out.println("Carrregar Pagina!");
@@ -93,14 +109,17 @@ public class EstoqueBean implements Serializable {
 	public void prepararExclusao(ActionEvent event) {
 
 		produto = produtosSelecionados.getRowData();
+		System.out.println("ID PRODUTO PREPARAR EXCLUSAO: "+produto.getCodigo());
+		excluirProduto(produto.getCodigo());
 
 	}
 
-	public void excluirProduto(ActionEvent event) {
+	public void excluirProduto(Integer id) {
 
 		ProdutoDAO pdao = new ProdutoDAO();
 		try {
-			pdao.excluirProduto(produto.getCodigo());
+			System.out.println("ID PRODUTO EXCLUSAO: "+produto.getCodigo());
+			pdao.excluirProduto(id);
 			produtosSelecionados = new ListDataModel<Produto>(pdao.listarProdutos());
 
 		} catch (SQLException ex) {
@@ -263,5 +282,10 @@ public class EstoqueBean implements Serializable {
 	public void setProdutosSelecionados(ListDataModel<Produto> produtosSelecionados) {
 		this.produtosSelecionados = produtosSelecionados;
 	}
+	
+	public void setImages(List<String> images) {
+		this.images = images;
+	}
 
+	
 }
