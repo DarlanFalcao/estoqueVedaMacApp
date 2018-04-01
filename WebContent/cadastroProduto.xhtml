@@ -24,38 +24,39 @@
                                          size="8" />
                             <p:outputLabel value="Cod Fornecedor: "/>
                             <p:inputText value="#{estoqueBean.produto.codigoForn}"
-                                         size="8" />
-                            <p:outputLabel value="Fornecedor: " styleClass="labelTeste"/>
+                                         size="8"  />
+                            <p:outputLabel value="Fornecedor: " />
                             <p:inputText value="#{estoqueBean.produto.fornecedor}"
-                                         size="50" maxlength="15" styleClass="inputTeste"/>
+                                          maxlength="15" styleClass="fornecedorNome"/>
 
                         </h:panelGrid>
                         <p:outputLabel value="Nome: " for="descricao"/>
-                        <h:panelGrid columns="1">
-                            <p:inputText id="descricao" value="#{estoqueBean.produto.descricao}" size="103" />
+                        <h:panelGrid columns="1" styleClass="grid">
+                            <p:inputText id="descricao" value="#{estoqueBean.produto.descricao}" required="true" requiredMessage="Valor Obrigtório"
+                            styleClass="nome" />
                         </h:panelGrid>
                         <p:outputLabel value="Nome Red: " />
                         <h:panelGrid columns="3"  cellpadding="2">
 
                             <p:inputText value="#{estoqueBean.produto.nomeReduzido}" size="40" />
-                            <p:outputLabel value="Marca: " >
+                            <p:outputLabel value="Marca: " styleClass="marcaLabel" >
 
                             </p:outputLabel>
-                            <p:inputText value="#{estoqueBean.produto.marca}" size="50" />
+                            <p:inputText value="#{estoqueBean.produto.marca}" styleClass="marcaInput" />
                         </h:panelGrid>
                         <p:outputLabel value="Seg Nome: " style="padding-right:20px;"/>
                         <h:panelGrid columns="5" cellpadding="2">
 
                             <p:inputText value="#{estoqueBean.produto.segNome}" size="40" />
-                            <p:outputLabel value="EAN: " />
-                            <p:inputText value="#{estoqueBean.produto.ean}" size="40" />
+                            <p:outputLabel value="EAN: " styleClass="eanLabel" />
+                            <p:inputText value="#{estoqueBean.produto.ean}" styleClass="eanInput" />
 
                         </h:panelGrid>
                         <p:outputLabel value="Unidade: " />
 
                         <h:panelGrid columns="2">
 
-                            <p:selectOneMenu style="width:225px" 
+                            <p:selectOneMenu style="width:317px" 
                                              value="#{estoqueBean.produto.unidade}" converter="omnifaces.SelectItemsConverter">
                                 <f:selectItem noSelectionOption="true" itemLabel="Selecione a Unidade"/>
                                 <f:selectItems  value="#{estoqueBean.unidades}" var="unid" itemLabel="#{unid.unidade}" itemValue="#{unid.idUnidade}"/>
@@ -66,52 +67,52 @@
                         <p:outputLabel value="Garantia: " />
                         <h:panelGrid columns="7">
                             <p:inputText value="#{estoqueBean.produto.garantia}" size="10" />
-                            <p:outputLabel value="NCM: " />
-                            <p:inputText value="#{estoqueBean.produto.ncm}" size="10" />
+                            <p:outputLabel value="NCM: " styleClass="ncmLabel"/>
+                            <p:inputText value="#{estoqueBean.produto.ncm}" size="10" styleClass="ncmInput"/>
                             <p:outputLabel value="Cod.Espec.Sit.Tribut: " />
                             <p:inputText value="#{estoqueBean.produto.cest}" size="10" />
                             <p:outputLabel value="Origem(0/1): " />
-                            <p:inputText value="#{estoqueBean.produto.origem}" size="10" />
+                            <p:inputText value="#{estoqueBean.produto.origem}" size="10" styleClass="origemInput" />
                         </h:panelGrid>
                         <p:outputLabel value="Preço Compra: " />
-                        <h:panelGrid columns="5">
+                        <h:panelGrid columns="7">
                             <p:inputText value="#{estoqueBean.produto.precoCompra}" size="10" />
                             <p:outputLabel value="Preço Venda: " />
                             <p:inputText value="#{estoqueBean.produto.preco}" size="10" />
-                            <p:outputLabel value="Peso: " />
+                            <p:outputLabel value="Peso: " styleClass="pesoLabel" />
                             <p:inputText value="#{estoqueBean.produto.peso}" size="10" />
+                             <p:outputLabel value="% IPI: " styleClass="ipiLabel" />
+                            <p:inputText value="#{estoqueBean.produto.ipi_perc}" styleClass="ipiInput" />
 
                         </h:panelGrid>
                         <p:outputLabel value="CST ICMS(xxx): " />
                         <h:panelGrid columns="10">
-                            <p:inputText value="#{estoqueBean.produto.icms_cst}" size="5" />
-                            <p:outputLabel value="% ICMS: " />
-                            <p:inputText value="#{estoqueBean.produto.icms_perc}" size="5" />
-                            <p:outputLabel value="% ICMS(Red): " />
-                            <p:inputText value="#{estoqueBean.produto.icms_pred}" size="5" />
-                            <p:outputLabel value="CST IPI(xx): " />
-                            <p:inputText value="#{estoqueBean.produto.ipi_cst}" size="5" />
-                            <p:outputLabel value="% IPI: " />
-                            <p:inputText value="#{estoqueBean.produto.ipi_perc}" size="5" />
-
+                            <p:inputText value="#{estoqueBean.produto.icms_cst}"  styleClass="inputTaxas" />
+                            <p:outputLabel value="% ICMS: " styleClass="icmsLabel"/>
+                            <p:inputText value="#{estoqueBean.produto.icms_perc}"  styleClass="inputTaxas" />
+                            <p:outputLabel value="% ICMS(Red): " styleClass="icmsRedLabel" />
+                            <p:inputText value="#{estoqueBean.produto.icms_pred}"  styleClass="inputTaxas"/>
+                            <p:outputLabel value="CST IPI(xx): " styleClass="cstipiLabel" />
+                            <p:inputText value="#{estoqueBean.produto.ipi_cst}"  styleClass="ipiInput"/>
+                           
 
                         </h:panelGrid>
                         <p:outputLabel value="CST PIS(xx): " />
 
                         <h:panelGrid columns="7">
 
-                            <p:inputText value="#{estoqueBean.produto.pis_cst}" size="5" />
-                            <p:outputLabel value="%PIS: " />
+                            <p:inputText value="#{estoqueBean.produto.pis_cst}"  styleClass="inputTaxas" />
+                            <p:outputLabel value="%PIS: " styleClass="pisLabel" />
 
-                            <p:inputText value="#{estoqueBean.produto.pis_perc}" size="5" />
-                            <p:outputLabel value="CST CONFINS: " />
-                            <p:inputText value="#{estoqueBean.produto.confins_cst}" size="5" />
+                            <p:inputText value="#{estoqueBean.produto.pis_perc}"  styleClass="inputTaxas"/>
+                            <p:outputLabel value="CST CONFINS: " styleClass="cstConfinsLabel"/>
+                            <p:inputText value="#{estoqueBean.produto.confins_cst}"  styleClass="inputTaxas"/>
                             <p:outputLabel value="%CONFINS: " />
-                            <p:inputText value="#{estoqueBean.produto.confins_perc}" size="5" />
+                            <p:inputText value="#{estoqueBean.produto.confins_perc}"  styleClass="ipiInput"/>
                         </h:panelGrid>
                         <p:outputLabel value="Quantidade: " for="qtde"/>
                         <h:panelGrid columns="1">
-                            <p:inputText  id="qtde"  value="#{estoqueBean.produto.qtde}" size ="10"/>
+                            <p:inputText  id="qtde"  value="#{estoqueBean.produto.qtde}" size ="10" required="true" requiredMessage="Valor Obrigtório"/>
                         </h:panelGrid>
 
                     </h:panelGrid>

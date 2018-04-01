@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+
+.menuPrincipal {
+	background-color: graytext;
+}
+
+.nome {
+	padding-left: 645px;
+}
+
+grid {
+	padding-left: 5px;
+}
+
+.fornecedorNome {
+	padding-left: 195px;
+}
+
+.marcaLabel {
+	padding-left: 33px;
+	
+}
+.marcaInput{
+	padding-left: 194px;
+}
+
+.eanLabel {
+	padding-left: 46px;
+	
+}
+.eanInput{
+	padding-left: 194px;
+}
+.ncmLabel{
+	padding-left: 60px;
+}
+.ncmInput{
+	
+}
+.origemInput{
+	width: 79px;
+}
+.pesoLabel{
+	padding-left: 121px;
+}
+.ipiLabel{
+	padding-left: 52px;
+}
+.ipiInput{
+	width:9px;
+}
+.inputTaxas{
+	width: 230px;
+}
+.icmsLabel{
+	padding-left: 34px;
+}
+.cstipiLabel{
+	padding-left: 3px;
+}
+.pisLabel{
+	padding-left: 55px;
+}
+.icmsRedLabel{
+	padding-left: 52px;
+}
+.cstConfinsLabel{
+	padding-left: 42px;
+}
