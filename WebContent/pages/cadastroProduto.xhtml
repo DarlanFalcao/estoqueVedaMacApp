@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+
+<ui:composition template="/templates/templateBase.xhtml">
+
+	<f:metadata>
+		<!--  f:event  type="preRenderView" listener="#{estoqueBean.carregarPagina}"  />-->
+	</f:metadata>
+	<ui:define name="conteudo">
+		<!-- h:outputStylesheet library="css" name="/resources/css/bootstrap.min.css"/> -->
+		<h:outputScript name="cadastroProduto.js" library="js"></h:outputScript>
+
+
+		<nav class="navbar navbar-light bg-light"> 
+		<a class="navbar-brand" href="#"> 
+		<h:graphicImage name="principal.jpg" library="imagens" width="100" ></h:graphicImage>
+		 Cadastro de Produtos </a> </nav>
+
+		<h:form>
+			<div class="form-row">
+				<div class="form-group col-md-1">
+					<label for="codigo">Código:</label>
+					<h:inputText id="codigo" value="#{estoqueBean.produto.codigo}"
+						class="form-control" disabled="true" />
+				</div>
+				<div class="form-group col-md-4">
+					<label for="codigo">Cód Fornecedor: </label>
+					<h:inputText value="#{estoqueBean.produto.codigoForn}"
+						class="form-control " id="codForn" />
+					<p:watermark for="codForn" value="Código do Fornecedor"
+						id="watermark" />
+				</div>
+				<div class="form-group col-md-5">
+					<label for="forn">Fornecedor: </label>
+					<h:inputText value="#{estoqueBean.produto.fornecedor}" id="forn"
+						class="form-control" />
+					<p:watermark for="forn" value="Nome do Fornecedor" />
+				</div>
+
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-5">
+					<label for="nome">*Nome:</label>
+					<h:inputText id="nome" value="#{estoqueBean.produto.descricao}"
+						required="true" class="form-control"
+						requiredMessage="O Valor do Nome do Produto é Obrigatório" />
+					<p:watermark for="nome" value="Nome do Produto" />
+					<div class="invalid-feedback">Please provide a valid city.</div>
+				</div>
+				<div class="form-group col-md-5">
+					<label for="nomeRed">Nome Red:</label>
+					<h:inputText value="#{estoqueBean.produto.nomeReduzido}"
+						class="form-control" id="nomeRed" />
+					<p:watermark for="nomeRed" value="Nome Reduzido do Produto" />
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="marca">Marca:</label>
+					<h:inputText value="#{estoqueBean.produto.marca}"
+						class="form-control" id="marca" />
+					<p:watermark for="marca" value="Marca do Produto" />
+				</div>
+				<div class="form-group col-md-3">
+					<label for="segNome">Seg Nome:</label>
+					<h:inputText value="#{estoqueBean.produto.segNome}" id="segNome"
+						class="form-control" />
+				</div>
+				<div class="form-group col-md-2">
+					<label for="ean">EAN:</label>
+					<h:inputText value="#{estoqueBean.produto.ean}"
+						class="form-control" id="ean" />
+				</div>
+				<div class="form-group col-md-2">
+					<label for="un">Unidade: </label>
+					<h:selectOneMenu id="un" styleClass="form-control"
+						value="#{estoqueBean.produto.unidade}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem noSelectionOption="true"
+							itemLabel="Selecione a Unidade" />
+						<f:selectItems value="#{estoqueBean.unidades}" var="unid"
+							itemLabel="#{unid.unidade}" itemValue="#{unid.idUnidade}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-1">
+					<label for="garantia">Garantia: </label>
+					<h:inputText value="#{estoqueBean.produto.garantia}"
+						class="form-control" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="ncm">NCM:</label>
+					<h:inputText value="#{estoqueBean.produto.ncm}"
+						class="form-control" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="codEsp">Cod.Espec:</label>
+					<h:inputText id="codEsp" value="#{estoqueBean.produto.cest}"
+						class="form-control" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="orig">Origem(0/1):</label>
+					<h:inputText id="orig" value="#{estoqueBean.produto.origem}"
+						class="form-control" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="precoCompra">Preço Comp:</label>
+					<h:inputText value="#{estoqueBean.produto.precoCompra}"
+						id="precoCompra" class="form-control" />
+					<p:watermark for="precoCompra" value="R$ 0.00" />
+
+				</div>
+				<div class="form-group col-md-1">
+					<label for="precoVenda">Preço Venda:</label>
+					<h:inputText id="precoVenda" value="#{estoqueBean.produto.preco}"
+						class="form-control" />
+					<p:watermark for="precoVenda" value="R$ 0.00" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="peso">Peso:</label>
+					<h:inputText value="#{estoqueBean.produto.peso}"
+						class="form-control" id="peso" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="ipi">% IPI:</label>
+					<h:inputText value="#{estoqueBean.produto.ipi_perc}" id="ipi"
+						class="form-control" />
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group col-md-1">
+					<label for="cstIcms">CST ICMS:</label>
+					<h:inputText value="#{estoqueBean.produto.icms_cst}"
+						class="form-control" id="cstIcms" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="icms">%ICMS:</label>
+					<h:inputText value="#{estoqueBean.produto.icms_perc}"
+						class="form-control" id="icms" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="icmsRed">% ICMS(Red):</label>
+					<h:inputText value="#{estoqueBean.produto.icms_pred}"
+						class="form-control" id="icmsRed" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="cstIpi">CST IPI:</label>
+					<h:inputText value="#{estoqueBean.produto.ipi_cst}"
+						class="form-control" id="cstIpi" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="cstPis">CST PIS:</label>
+					<h:inputText value="#{estoqueBean.produto.pis_cst}"
+						class="form-control" id="cstPis" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="pis">%PIS:</label>
+					<h:inputText value="#{estoqueBean.produto.pis_perc}"
+						class="form-control" id="pis" />
+				</div>
+
+				<div class="form-group col-md-1">
+					<label for="cstConfins">CST CON:</label>
+					<h:inputText value="#{estoqueBean.produto.confins_cst}"
+						class="form-control" id="cstConfins" />
+				</div>
+				<div class="form-group col-md-1">
+					<label for="percConfins">%CONFINS:</label>
+					<h:inputText value="#{estoqueBean.produto.confins_perc}"
+						class="form-control" id="percConfins" />
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group col-md-1">
+					<label for="qtde">Quantidade:</label>
+					<h:inputText id="qtde" value="#{estoqueBean.produto.qtde}"
+						class="form-control" />
+				</div>
+				<div style="padding-top: 35px; padding-left: 3px;">
+					<h:commandButton value="Salvar" update="frmCad" ajax="false"
+						action="#{estoqueBean.salvarProduto}" styleClass="btn btn-primary"
+						type="submit" />
+				</div>
+			</div>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
